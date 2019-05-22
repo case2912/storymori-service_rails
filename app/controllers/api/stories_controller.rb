@@ -1,5 +1,7 @@
 class StoriesController < ApplicationController
-  def show
-    'test'
+  def index
+    render json: Story.all
+  end
+  def create
   end
 end
