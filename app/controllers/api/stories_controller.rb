@@ -2,7 +2,7 @@ module Api
   class StoriesController < ApplicationController
     def index
       render json: Story.all.map{ |story|
-        id = Page.where(story_id:story.id).where(parent_id:nil)[0].id
+        id = story.pages.find_by(parent_id:nil).id
         story_hash = story.attributes
         story_hash.store('parentId',id)
         story_hash
