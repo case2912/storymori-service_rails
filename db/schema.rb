@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_043250) do
+ActiveRecord::Schema.define(version: 2019_05_23_063130) do
 
   create_table "pages", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_05_23_043250) do
     t.integer "story_id"
     t.string "name"
     t.string "text"
+    t.integer "parent_id"
+    t.index ["parent_id"], name: "index_pages_on_parent_id"
     t.index ["story_id"], name: "index_pages_on_story_id"
   end
 
