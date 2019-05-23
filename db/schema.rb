@@ -16,12 +16,8 @@ ActiveRecord::Schema.define(version: 2019_05_23_043250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "story_id"
-    t.integer "page_id"
-    t.integer "parent_id"
     t.string "name"
     t.string "text"
-    t.index ["page_id"], name: "index_pages_on_page_id"
-    t.index ["parent_id"], name: "index_pages_on_parent_id"
     t.index ["story_id"], name: "index_pages_on_story_id"
   end
 
