@@ -1,7 +1,7 @@
 module Api
   class StoriesController < ApplicationController
     def index
-      render json: {id:1}
+      render json: Story.all
     end
     def create
       summary = params[:text].slice(0,10)
