@@ -3,9 +3,9 @@ module Api
     def show
       page = Page.where(story_id:params[:story_id]).find(params[:id])
       children = Page.where(story_id:params[:story_id]).where(parent_id:params[:id])
-      @json = page.attributes
-      @json.store('children', children)
-      render json: @json
+      res = page.attributes
+      res.store('children', children)
+      render json: res
     end
     def next
       story_id = params[:story_id]
