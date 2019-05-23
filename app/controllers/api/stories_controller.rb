@@ -1,7 +1,12 @@
 module Api
   class StoriesController < ApplicationController
     def index
-      render json: Story.all
+      render json: Story.all.map{ |story|
+        id = Page.where(story_id:story.id).where(parent_id:nil)[0].id
+        story_hash = story.attributes
+        story_hash.store('parentId',id)
+        story_hash
+      }
     end
     def create
       text = params[:text]
