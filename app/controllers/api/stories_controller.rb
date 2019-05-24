@@ -5,8 +5,9 @@ module Api
     def index
       render json: Story.all.map { |story|
         page_root = story.pages.find_by(parent_id: nil)
+        id = page_root.id unless page_root.nil?
         story_hash = story.attributes
-        story_hash.store('parentId', page_root.id) unless page_root.nil?
+        story_hash.store('parentId', id)
         story_hash
       }
     end
