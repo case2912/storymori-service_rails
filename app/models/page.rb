@@ -1,5 +1,3 @@
 class Page < ApplicationRecord
-  attribute :name, :string, default: ''
-  attribute :text, :string, default: ''
-  has_many :pages
+  has_many :children, class_name: 'Page', foreign_key: 'parent_id'
 end

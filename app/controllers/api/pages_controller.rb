@@ -3,21 +3,21 @@
 module Api
   class PagesController < ApplicationController
     def show
-      pages = Story.find(params[:story_id]).pages
-      page = pages.find(params[:id])
-      children = pages.where(parent_id: params[:id])
-      res = page.attributes
+      page = Page.find_by!(id: params[:id], story_id: params[:story_id])
+      children = page.children.map { |child| child.slice(:id, :name) }
+      res = page.slice(:id, :name, :text)
       res.store('children', children)
       render json: res
     end
 
     def next
-      story_id = params[:story_id]
-      parent_id = params[:page_id]
-      text = params[:text]
-      name = params[:name]
-      page = Page.create(name: name, text: text, story_id: story_id, parent_id: parent_id)
-      render json: page
+      page = Page.create(
+        name: params[:name],
+        text: params[:text],
+        story_id: params[:story_id],
+        parent_id: params[:page_id]
+      )
+      render json: page.slice(:id)
     end
   end
 end

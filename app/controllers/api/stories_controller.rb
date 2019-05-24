@@ -4,9 +4,8 @@ module Api
   class StoriesController < ApplicationController
     def index
       render json: Story.all.map { |story|
-        page_root = story.pages.find_by(parent_id: nil)
-        id = page_root.id unless page_root.nil?
-        story_hash = story.attributes
+        id = story.pages.find_by(parent_id: nil).id
+        story_hash = story.slice(:id, :title)
         story_hash.store('parentId', id)
         story_hash
       }
