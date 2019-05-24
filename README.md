@@ -1,24 +1,33 @@
-# README
+# 実装すること
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## config/routes.rb で api のエンドポイントの定義
 
-Things you may want to cover:
+#### GET
 
-* Ruby version
+- [] /api/stories/
+- [] /api/stories/:story_id/**pages**/**:id**
 
-* System dependencies
+#### POST
 
-* Configuration
+- [] /api/stories/
+- [] /api/stories/**:story_id**/pages/**:page_id**/next
 
-* Database creation
+## データベース作成
 
-* Database initialization
+### migration file 作成
 
-* How to run the test suite
+## モデル・コントローラー作成
 
-* Services (job queues, cache servers, search engines, etc.)
+## 各エンドポイントのメソッド実装
 
-* Deployment instructions
+### /Api/pages_controller
 
-* ...
+- [] #show
+- [] #next
+
+### /Api/stories_controller
+
+- [] #index
+- [] #create
+
+## テストを書く
