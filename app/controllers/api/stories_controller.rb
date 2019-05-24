@@ -5,7 +5,7 @@ module Api
     def index
       render json: Story.all.map { |story|
         id = story.pages.find_by(parent_id: nil).id
-        story_hash = story.attributes
+        story_hash = story.slice(:id, :title)
         story_hash.store('parentId', id)
         story_hash
       }

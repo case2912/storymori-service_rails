@@ -17,7 +17,7 @@ module Api
         story_id: params[:story_id],
         parent_id: params[:page_id]
       )
-      render json: page
+      render json: page.slice(:id)
     end
   end
 end
